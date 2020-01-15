@@ -24,7 +24,10 @@ public class Main {
     log.info("------------------------------------------------------------------------");
 
     val myApp = container.select(MyApp.class).get();
-    log.info("id: " + String.valueOf(myApp.getMyClient().getId()));
+    log.info("id1: " + myApp.getMyClient1().getId());
+    log.info("hash1: " + myApp.getMyClient1().hashCode());
+    log.info("id2: " + myApp.getMyClient2().getId());
+    log.info("hash2: " + myApp.getMyClient2().hashCode());
     log.info("------------------------------------------------------------------------");
 
     val myClient2 = container.select(MyClient.class).get();
