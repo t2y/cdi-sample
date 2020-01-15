@@ -1,5 +1,7 @@
 package cdi.sample.dependencyinjection;
 
+import java.util.Arrays;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;
@@ -7,6 +9,8 @@ import javax.inject.Named;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
+import cdi.sample.Configuration;
+import lombok.Setter;
 import lombok.val;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @ApplicationScoped
 public class MyProducer {
 
+  @Setter private String value;
   private WeldContainer container;
 
   public MyProducer() {
@@ -57,8 +62,9 @@ public class MyProducer {
 
   @Produces
   @MyClientWithContainer
-  public MyClient getSelectMyClient() {
+  public MyClient getSelectMyClient(Configuration config) {
     log.info("called getSelectMyClient");
+    log.info("config.args: " + Arrays.toString(config.getArgs()));
     return this.container.select(MyClient.class).get();
   }
 }

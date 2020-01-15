@@ -1,5 +1,6 @@
 package cdi.sample;
 
+import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.se.SeContainerInitializer;
 
 import org.jboss.weld.environment.se.Weld;
@@ -12,6 +13,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Main {
+
+  private static Configuration CONFIGURATION;
+
+  @Produces
+  public static Configuration getConfiguration() {
+    log.info("called getConfiguration");
+    return CONFIGURATION;
+  }
 
   private static void initializeDependencyInjection() {
     val weld = new Weld().enableDiscovery();
@@ -35,6 +44,7 @@ public class Main {
     log.info("name: " + myClient2.getName());
     log.info("hash: " + myClient2.hashCode());
     log.info("------------------------------------------------------------------------");
+    weld.shutdown();
   }
 
   private static void initializeObserver() {
@@ -47,6 +57,9 @@ public class Main {
 
   public static void main(String[] args) {
     log.info("start");
+
+    CONFIGURATION = new Configuration(args);
+
     initializeDependencyInjection();
     initializeObserver();
     log.info("end");
