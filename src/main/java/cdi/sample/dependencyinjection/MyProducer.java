@@ -57,7 +57,7 @@ public class MyProducer {
 
   @Produces
   @MyClientWithContainer
-  public MyClient getSelectMyClient(@Named("withArgsId") int id, @Named("tname") String name) {
+  public MyClient getSelectMyClient() {
     log.info("called getSelectMyClient");
     return this.container.select(MyClient.class).get();
   }
