@@ -22,4 +22,5 @@ $ java -jar build/libs/cdi-sample-all.jar
 ## Reference
 
 * https://jcp.org/en/jsr/detail?id=365
+* http://cdi-spec.org/
 * https://www.baeldung.com/java-ee-cdi
