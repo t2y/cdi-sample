@@ -33,11 +33,20 @@ public class Main {
     log.info("hash: " + myClient1.hashCode());
     log.info("------------------------------------------------------------------------");
 
-    val myApp = container.select(MyApp.class).get();
-    log.info("id1: " + myApp.getMyClient1().getId());
-    log.info("hash1: " + myApp.getMyClient1().hashCode());
-    log.info("id2: " + myApp.getMyClient2().getId());
-    log.info("hash2: " + myApp.getMyClient2().hashCode());
+    val myApp1 = container.select(MyApp.class).get();
+    log.info("myApp1.hash: " + myApp1.hashCode());
+    log.info("myApp1.client.id1: " + myApp1.getMyClient1().getId());
+    log.info("myApp1.client.hash1: " + myApp1.getMyClient1().hashCode());
+    log.info("myApp1.client.id2: " + myApp1.getMyClient2().getId());
+    log.info("myApp1.client.hash2: " + myApp1.getMyClient2().hashCode());
+    log.info("------------------------------------------------------------------------");
+
+    val myApp2 = container.select(MyApp.class).get();
+    log.info("myApp2.hash: " + myApp2.hashCode());
+    log.info("myApp2.client.id1: " + myApp2.getMyClient1().getId());
+    log.info("myApp2.client.hash1: " + myApp2.getMyClient1().hashCode());
+    log.info("myApp2.client.id2: " + myApp2.getMyClient2().getId());
+    log.info("myApp2.client.hash2: " + myApp2.getMyClient2().hashCode());
     log.info("------------------------------------------------------------------------");
 
     val myClient2 = container.select(MyClient.class).get();
@@ -45,6 +54,7 @@ public class Main {
     log.info("name: " + myClient2.getName());
     log.info("hash: " + myClient2.hashCode());
     log.info("------------------------------------------------------------------------");
+
     weld.shutdown();
   }
 
