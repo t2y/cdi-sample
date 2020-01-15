@@ -10,7 +10,6 @@ import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
 import cdi.sample.Configuration;
-import lombok.Setter;
 import lombok.val;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 @ApplicationScoped
 public class MyProducer {
 
-  @Setter private String value;
   private WeldContainer container;
 
   public MyProducer() {
