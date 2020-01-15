@@ -8,13 +8,14 @@ import org.jboss.weld.environment.se.Weld;
 import cdi.sample.dependencyinjection.MyApp;
 import cdi.sample.dependencyinjection.MyClient;
 import cdi.sample.observer.SimpleEvent;
+import lombok.Setter;
 import lombok.val;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Main {
 
-  private static Configuration CONFIGURATION;
+  @Setter private static Configuration CONFIGURATION;
 
   @Produces
   public static Configuration getConfiguration() {

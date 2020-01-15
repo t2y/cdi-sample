@@ -37,11 +37,12 @@ test {
     useJUnitPlatform()
 }
 
-task copyResources(type: Copy) {
-    from "${projectDir}/src/main/resources"
-    into "${buildDir}/classes/main"
+task copyBeansXml(type: Copy) {
+    from "${projectDir}/src/main/resources/META-INF"
+    into "${buildDir}/classes/java/main/META-INF"
 }
-processResources.dependsOn copyResources
+processResources.dependsOn copyBeansXml
+processTestResources.dependsOn copyBeansXml
 
 shadowJar {
     mergeServiceFiles()
